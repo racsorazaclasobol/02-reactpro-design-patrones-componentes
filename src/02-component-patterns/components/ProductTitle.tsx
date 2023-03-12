@@ -1,13 +1,20 @@
 import { useContext } from "react";
 import { ProductContext } from "./ProductoCard";
 
-export const ProductTitle = ({ title }: { title?: string }) => { //{ title: string } simula ser una interfaz
+export interface TitleProps {
+    title?: string;
+    className?: string
+    style?: React.CSSProperties;
+}
+
+export const ProductTitle = ({ title, className, style }: TitleProps) => { //{ title: string } simula ser una interfaz
 
     const { product } = useContext( ProductContext );
+
     let titleToShow: string; 
     titleToShow = ( !title ) ? product.title : title;
 
     return (
-        <span className='productDescription'> { titleToShow } </span>
+        <span className={`productDescription ${ className }`}> { titleToShow } </span>
     )
 }
