@@ -18,3 +18,12 @@ export interface ProductContextProps {
 //     Image:  ({ img }    : { img?: string }  )    => JSX.Element;
 //     Button: (                               )    => JSX.Element;
 // }
+
+export interface onChangeArgs {
+    product: Product;
+    counter: number;
+}
+
+export interface ProductInCart extends Product {
+	counter: number
+}
