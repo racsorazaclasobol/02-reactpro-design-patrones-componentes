@@ -16,8 +16,6 @@ export const useProduct = ( { onChange, product, counterValue = 0 }: useProductA
 
 
     const increaseBy = ( valueToIncrease: number ) => {
-
-        if( isControlled.current ) return onChange!({ counter: valueToIncrease, product })
         
         const counterIncreased = Math.max( counter + valueToIncrease, 0 )
 
