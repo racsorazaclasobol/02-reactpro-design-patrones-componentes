@@ -13,11 +13,24 @@ export const ShoppingPage = () => {
 			<h1>Shpping Store</h1>
 			<hr />
 
-			<ProductCard key={ product.id } product={ product } className="bg-dark text-white" >
+			<ProductCard key={ product.id } product={ product } initialValues={{ counter: 4, maxCounter: 10 }} className="bg-dark text-white" >
 
-				<ProductImage className="custom-image" />
-				<ProductTitle className="text-bold" />
-				<ProductButton className="custom-buttons" />
+				{
+					({ counter, maxCounter, isMaxCounterReached, reset, increaseBy }) => (
+						<>
+							<ProductImage className="custom-image" />
+							<ProductTitle className="text-bold" />
+							<ProductButton className="custom-buttons" />
+
+							<button onClick={ reset } > Reset </button>
+							<button onClick={ () => increaseBy( -2 ) } > -2 </button>
+							{
+								( !isMaxCounterReached && <button onClick={ () => increaseBy( 2 ) } > +2 </button> )
+							}
+							<span> { counter } - { maxCounter }</span>
+						</>
+					)
+				}
 
 			</ProductCard>
 
